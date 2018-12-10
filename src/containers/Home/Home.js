@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './Home.scss';
 
 import Featured from '../FeaturedPosts/Featured.js';
@@ -30,10 +31,10 @@ class Home extends Component {
             <nav className="navigation__nav">
                 <ul className="navigation__list">
                     <li className="navigation__item">
-                        <a href="/" className="navigation__link">Sample 1</a>
+                        <Link to="/about" className="navigation__link">Home</Link>
                     </li>
                     <li className="navigation__item">
-                        <a href="/" className="navigation__link">Sample 2</a>
+                        <Link to="/post" className="navigation__link">Post</Link>
                     </li>
                 </ul>
             </nav>

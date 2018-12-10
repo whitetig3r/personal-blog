@@ -1,7 +1,6 @@
 import React from 'react';
 import './BlogCard.scss';
-
-//import postImg from '../../assets/han.jpg';
+import { Link } from 'react-router-dom';
 //container -post__content
 // img - post__content-image
 // overlay - post_content__inner
@@ -10,10 +9,13 @@ import './BlogCard.scss';
 const BlogCard = props => {
     const textContent = (
         <div className="post__content__inner">
-            <h1 className="post__content__inner__header">Blog Post #{props.in + 1}</h1>
+            <h1 className="post__content__inner__header">{props.title}</h1>
             <hr />
             <p className="post__content__inner__text">
-               {props.content}
+                {props.preview}
+                <Link to="/post" className="post__content__inner__link">...Continue Reading</Link>
+                <br /> <br/>
+                <span className="post__content__inner__timestamp">Written on {props.published.substring(0,10)}</span>
             </p>
         </div>
     );
@@ -22,7 +24,7 @@ const BlogCard = props => {
                 <div className="post__card">
                     <div className="post__content">
                         {
-                            textContent 
+                            textContent
                         }
                     </div>
                 </div>

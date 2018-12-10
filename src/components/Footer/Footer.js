@@ -5,9 +5,10 @@ const Footer = props => {
   return (
     <footer className="footer">
           <div className="footer__logo-box">
+            A bite of lifestyle and technology.
           </div>
-          <div className="row">
-            <div className="col-1-of-2">
+          <div className="footer-row">
+            <div className="footer-col-1-of-2">
               <div className="footer__navigation">
                 <ul className="footer__navigation__list">
                   <li className="footer__navigation__list__item"><a href="/" className="footer__navigation__list__item__link">Instagram</a></li>
@@ -17,7 +18,7 @@ const Footer = props => {
                 </ul>
               </div>
             </div>
-            <div className="col-1-of-2">
+            <div className="footer-col-1-of-2">
               <p className="footer__copyright">
                 MegaByte&copy;
               </p>
