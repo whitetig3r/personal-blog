@@ -9,7 +9,7 @@ class App extends Component {
       <Router>
         <div>
           <Route path="/" exact render={()=><Home />} />
-          <Route path="/post" exact render={() => <BlogPost />} />
+          <Route path= {`/post/:id`} exact component={BlogPost}/>
         </div>
       </Router>
     );

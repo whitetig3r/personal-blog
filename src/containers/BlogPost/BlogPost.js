@@ -1,57 +1,33 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { Query } from 'react-apollo';
-import { fetch_post } from '../../graphql/Queries';
+import { fetch_specific_post } from '../../graphql/Queries';
 import Markdown from 'react-markdown';
 import './BlogPost.scss';
 
 import Footer from '../../components/Footer/Footer.js';
+import Navigation from '../../components/Navigation/Navigation';
 
 
-class Home extends Component {
+class BlogPost extends Component {
 
     state = {
         navToggle: false
     }
 
     render() {
-        const nav_main = (
-            <nav className="navigation__nav">
-                <ul className="navigation__list">
-                    <li className="navigation__item">
-                        <Link to="/" className="navigation__link">Home</Link>
-                    </li>
-                    <li className="navigation__item">
-                        <Link to="/post" className="navigation__link">Post</Link>
-                    </li>
-                </ul>
-            </nav>
-        );
-
         return (
             <div className="wrapper">
-                <header>
-                    <div className="navigation">
+               <Navigation 
+                    setNavState={
+                        () => this.setState({
+                            navToggle: !this.state.navToggle
+                        })
+                    }
 
-                        <input type="checkbox" onClick={() => { this.setState({ navToggle: !this.state.navToggle }) }} className="navigation__checkbox" id="navi-toggle" />
-                        <label htmlFor="navi-toggle" className="navigation__button">
-                            <span className="navigation__icon">&nbsp;</span>
-                        </label>
-                        <div className="navigation__background">&nbsp;</div>
-
-                        {
-                            this.state.navToggle ? nav_main : true
-                        }
-
-                        <div className="logo__header">
-                            <h1>MegaByte</h1>
-                        </div>
-
-                    </div>
-
-                </header>
-
-                <Query query={ fetch_post }>
+                    navToggle={this.state.navToggle}
+                    page = "BlogPost"
+                />
+                <Query query={ fetch_specific_post } variables={{ title: decodeURIComponent(this.props.match.params.id) }}>
                 { 
                     ( { data, loading } ) => {
 
@@ -106,4 +82,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default BlogPost;

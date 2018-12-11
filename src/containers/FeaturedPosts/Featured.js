@@ -13,13 +13,13 @@ class Featured extends Component {
     render(){     
         return(
             <div>
-                <h1 className="recent__header">WHAT'S NEW?</h1>
+                <h1 className="recent__header">FEATURED</h1>
                 <div className="main-row">
                     <Query query={fetch_post}>
                         {   
                             ( { data, loading } ) => {
                                     if(loading) return (<h1>Loading</h1>);
-                                    console.log(data.posts);
+                                    //console.log(data.posts);
                                     return (data.posts.map( (post,index) => (
                                             <div className="main-col-1-of-2">
                                                 <BlogCard 

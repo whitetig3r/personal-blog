@@ -1,10 +1,7 @@
 import React from 'react';
 import './BlogCard.scss';
 import { Link } from 'react-router-dom';
-//container -post__content
-// img - post__content-image
-// overlay - post_content__inner
-//text = post__Content__inner__text
+
 
 const BlogCard = props => {
     const textContent = (
@@ -13,7 +10,7 @@ const BlogCard = props => {
             <hr />
             <p className="post__content__inner__text">
                 {props.preview}
-                <Link to="/post" className="post__content__inner__link">...Continue Reading</Link>
+                <Link to={`/post/${encodeURIComponent(props.title)}`} className="post__content__inner__link"><br />Continue Reading</Link>
                 <br /> <br/>
                 <span className="post__content__inner__timestamp">Written on {props.published.substring(0,10)}</span>
             </p>
@@ -21,13 +18,13 @@ const BlogCard = props => {
     );
 
     return (
-                <div className="post__card">
-                    <div className="post__content">
-                        {
-                            textContent
-                        }
+                    <div className="post__card">
+                        <div className="post__content">
+                            {
+                                textContent
+                            }
+                        </div>
                     </div>
-                </div>
       );
 }
 
