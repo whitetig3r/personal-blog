@@ -13,6 +13,10 @@ const Navigation = props => {
             "BlogPost" : {
                 to: "/",
                 displayText: "Home"
+            },
+            "About" : {
+                to: "/",
+                displayText: "Home"
             }
         }
 

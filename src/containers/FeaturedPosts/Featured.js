@@ -17,21 +17,21 @@ class Featured extends Component {
                 <div className="main-row">
                     <Query query={fetch_post}>
                         {   
-                            ( { data, loading } ) => {
-                                    if(loading) return (<h1>Loading</h1>);
-                                    //console.log(data.posts);
+                            ({ data, loading }) => {
+
+                                    if (loading) return (<div style={{height: '20vh'}}/>);
                                     return (data.posts.map( (post,index) => (
-                                            <div className="main-col-1-of-2">
-                                                <BlogCard 
-                                                    in={index}    
-                                                    title={post.title} 
-                                                    preview={post.postpreview}
-                                                    author={post.author} 
-                                                    published={post.publishdate} 
-                                                    content={post.title}  
-                                                />
-                                            </div>))
-                                    ) 
+                                                <div key={index} className="main-col-1-of-2">
+                                                    <BlogCard 
+                                                        in={index}    
+                                                        title={post.title} 
+                                                        preview={post.postpreview}
+                                                        author={post.author} 
+                                                        published={post.publishdate} 
+                                                        content={post.title}  
+                                                    />
+                                                </div>))
+                                    )
                                 }
                         }
                     </Query>

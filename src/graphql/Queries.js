@@ -1,13 +1,13 @@
 import gql from 'graphql-tag'
 
 export const fetch_post = gql`query{
-    posts{
-        title
-        postpreview
-        author
-        publishdate
-        article
-    }
+  posts{
+    title
+    author
+    postpreview
+    publishdate
+    article
+  }
 }`
 
 export const fetch_specific_post = gql`query ($title: String){
@@ -18,6 +18,7 @@ export const fetch_specific_post = gql`query ($title: String){
     author
     postpreview
     publishdate
+    imageHeaderLink
     article
   }
 }`

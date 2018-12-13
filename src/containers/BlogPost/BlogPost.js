@@ -31,14 +31,14 @@ class BlogPost extends Component {
                 { 
                     ( { data, loading } ) => {
 
-                        if (loading) return (<h1>Error fetching posts!</h1>);
+                        if (loading) return (<div style={{height: '20vh'}}/>);
 
                         if (data) {
                             const { posts } = data;
                                 return (
                                 <div>
                                     <section className="header__section">
-                                        <div className="header__section__bg" style={{ backgroundImage: "url(https://www.gruppotreviroma.com/blog/wp-content/uploads/2018/07/mt-sample-background-1024x683.jpg)" }} />
+                                            <div className="header__section__bg" style={{ backgroundImage: `url(${[posts[0].imageHeaderLink]})` }} />
                                     </section>
 
                                     <article className="blog__section__article">
