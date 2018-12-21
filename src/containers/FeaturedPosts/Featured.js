@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import BlogCard from '../../components/BlogCard/BlogCard.js';
 import './Featured.scss';
-import { fetch_post } from '../../graphql/Queries';
+import { fetch_post } from '../../graphql/Queries.js';
 import { Query } from 'react-apollo';
 
 class Featured extends Component {
@@ -13,7 +13,18 @@ class Featured extends Component {
     render(){     
         return(
             <div>
-                <h1 className="recent__header">FEATURED</h1>
+                <div className="main-row" style={{marginBottom:'0rem'}}>
+                    <div className="main-col-1-of-2">
+                        <h1 className="main-row__header">Recent Posts</h1>
+                    </div>
+                </div>
+                <div className="main-row" style={{ marginBottom: '0rem' }}>
+                    <div className="main-col-1-of-2">
+                        <p className="main-row__p">
+                            Lifestyle. Food. Technology. Innovation. More?
+                        </p>
+                    </div>
+                </div>
                 <div className="main-row">
                     <Query query={fetch_post}>
                         {   
@@ -26,6 +37,7 @@ class Featured extends Component {
                                                         in={index}    
                                                         title={post.title} 
                                                         preview={post.postpreview}
+                                                        image={post.imageHeaderLink}
                                                         author={post.author} 
                                                         published={post.publishdate} 
                                                         content={post.title}  

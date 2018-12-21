@@ -4,7 +4,7 @@ export const fetch_post = gql`query{
   posts{
     title
     author
-    postpreview
+    imageHeaderLink
     publishdate
     article
   }
@@ -16,7 +16,6 @@ export const fetch_specific_post = gql`query ($title: String){
   }){
     title
     author
-    postpreview
     publishdate
     imageHeaderLink
     article

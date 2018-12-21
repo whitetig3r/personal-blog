@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import './Home.scss';
 
-import Featured from '../FeaturedPosts/Featured.js';
-import Footer from '../../components/Footer/Footer.js';
+import Featured from '../FeaturedPosts/Featured';
+import Footer from '../../components/Footer/Footer';
 import Navigation from '../../components/Navigation/Navigation';
 
-import vidMP4 from '../../assets/video.mp4';
-import vidWEBM from '../../assets/video.webm';
 import vidJPG from '../../assets/video.jpg';
 
 class Home extends Component{
@@ -18,12 +16,12 @@ class Home extends Component{
     render(){
         const heading = (
         <h1 className="main__section__header">
-            Lifestyled.
+            A few thoughts...
         </h1>);
 
         const heading_inv = (
         <h1 className="main__section__header__inverted">
-            Lifestyled.
+            A few thoughts...
         </h1>);
 
         return (
@@ -41,11 +39,13 @@ class Home extends Component{
                     <section className="main__section">
                             { !this.state.navToggle ? heading : heading_inv }
                             <div className="main__section__bg-video">
-                              <video className="main__section__bg-video__content" poster={vidJPG} autoPlay playsInline muted loop>
-                                  <source src={vidMP4} type="video/mp4" />
-                                  <source src={vidWEBM} type="video/webm" />
-                              </video>
+                              <img className="main__section__bg-video__content" src={vidJPG} alt="Delhi Street" />
                             </div>
+                            <svg className="arrows">
+                                <path className="a1" d="M0 0 L30 32 L60 0"></path>
+                                <path className="a2" d="M0 20 L30 52 L60 20"></path>
+                                <path className="a3" d="M0 40 L30 72 L60 40"></path>
+                            </svg>
                     </section>
                     <section className="featured__section">
                       <Featured />

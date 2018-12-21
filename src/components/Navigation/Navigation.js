@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Query } from 'react-apollo';
+
+import { fetch_post } from '../../graphql/Queries';
 
 import './Navigation.scss';
 
@@ -7,8 +10,8 @@ const Navigation = props => {
         
         const links = {
             "Home" : { 
-                to: "/about",
-                displayText: "About"
+                to: "recent",
+                displayText: "Recent Post"
             },
             "BlogPost" : {
                 to: "/",
@@ -24,7 +27,25 @@ const Navigation = props => {
             <nav className="navigation__nav">
                 <ul className="navigation__list">
                     <li className="navigation__item">
-                        <Link to={`${links[props.page].to}`} className="navigation__link"> {`${links[props.page].displayText}`} </Link>
+                    <Query query={fetch_post}>
+                        {
+                            ( { data, loading }) => {
+                                if(data){
+                                    return (<Link to={links[props.page].to !== "recent" ?
+                                        `${links[props.page].to}` :
+                                        '/post/' + encodeURIComponent(data.posts[0].title)
+                                    } 
+                                        className="navigation__link"
+                                    > 
+                                            {`${links[props.page].displayText}`} 
+                                    </Link>);
+                                }
+                                if(loading){
+                                    return true;
+                                }
+                            }
+                        }
+                    </Query>
                     </li>
                 </ul>
             </nav>
@@ -45,7 +66,7 @@ const Navigation = props => {
                         props.navToggle ? nav_main : true
                     }
                     <div className="logo__header">
-                        <h1>MegaByte</h1>
+                        <h1>MegaBite</h1>
                     </div>
                 </div>
             </header>);

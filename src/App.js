@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-
-import Home from './containers/Home/Home.js';
-import About from './containers/About/About';
-import BlogPost from './containers/BlogPost/BlogPost';
+import AsyncComponent from './containers/HOCs/AysncComponent';
+import Home from './containers/Home/Home';
 import ScrollToTop from './ScrollToTop';
 
 import './App.scss';
+
+const BlogPost = AsyncComponent(() => import('./containers/BlogPost/BlogPost')); //CODE SPLITTING \m/
 
 
 class App extends Component {
@@ -24,7 +24,6 @@ class App extends Component {
                 >
                   <Switch>
                     <Route path="/" exact render={() => <Home />} />
-                    <Route path="/about" exact render={() => <About />} />
                     <Route path={`/post/:id`} exact component={BlogPost} />
                   </Switch>
                 </CSSTransition>

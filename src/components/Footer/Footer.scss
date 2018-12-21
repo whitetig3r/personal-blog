@@ -1,7 +1,8 @@
 @import "../../sass/grid.scss";
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
 
 .footer{
-   background-color: $color-grey-dark-3;
+   background: linear-gradient(to top right, $color-grey-dark-3, rgba(0,0,0,0.8));
    padding: 3rem 0;
    font-size: 1.4rem;
    color: $color-grey-light-1;
@@ -23,7 +24,8 @@
       margin-top: 2rem;
       &__item{
          display: inline-block;
-
+        font-size: 1.2rem;
+        font-family: 'Gloria Hallelujah', cursive;
         &:not(:last-child) {
             margin-right: 1.5rem;
          }
@@ -35,7 +37,6 @@
             color: $color-grey-light-1;
             background-color: $color-grey-dark-3;
             text-decoration: none;
-            text-transform: uppercase;
             display: inline-block;
             transition: all .2s;
           }
@@ -44,7 +45,7 @@
           &:active {
               color: $color-white;
               box-shadow: 0 1rem 2rem rgba($color-black, .4);
-              transform: rotate(5deg) scale(1.3);
+              transform: rotate(5deg) scale(1.1);
           }
 
          }
@@ -63,8 +64,23 @@
       //padding-top: 3rem;
       text-align: center;
       margin-top: 2.5rem;
-      width: 80%;
+      width: 60%;
       float: right;
     }
 
+}
+
+@media only screen and (max-width: 37.5em){
+  .footer{
+    &__copyright{
+      width: 100%;
+    }
+    &__navigation{
+      width: 100%;
+      &__list{
+        padding: 0;
+        text-align: center;
+      }
+    }
+  }
 }

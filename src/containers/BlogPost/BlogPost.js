@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
+import ProgressiveImage from 'react-progressive-image';
 import { fetch_specific_post } from '../../graphql/Queries';
 import Markdown from 'react-markdown';
 import './BlogPost.scss';
 
-import Footer from '../../components/Footer/Footer.js';
+import Footer from '../../components/Footer/Footer';
 import Navigation from '../../components/Navigation/Navigation';
 
 
@@ -38,7 +39,13 @@ class BlogPost extends Component {
                                 return (
                                 <div>
                                     <section className="header__section">
-                                            <div className="header__section__bg" style={{ backgroundImage: `url(${[posts[0].imageHeaderLink]})` }} />
+                                            <ProgressiveImage src={[posts[0].imageHeaderLink]} placeholder="post-header.jpg">
+                                            {
+                                                (src, loading) => (
+                                                    <div className="header__section__bg" style={{ backgroundImage: `linear-gradient(to top right, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.25)), url(${src})`, backgroundColor: loading ? "black" : "transparent" }} />
+                                            )
+                                        }
+                                        </ProgressiveImage>
                                     </section>
 
                                     <article className="blog__section__article">
@@ -56,7 +63,7 @@ class BlogPost extends Component {
                                                     Written by { posts[0].author }
                                                     </span>
                                                 <span className="blog__section__article__content__attributes__timestamp">
-                                                    { posts[0].publishdate.substring(0,10) }    
+                                                    { new Date(posts[0].publishdate).toUTCString().slice(0,-13) }    
                                                 </span>
                                             </section>
 
@@ -64,7 +71,6 @@ class BlogPost extends Component {
                                             <div className="blog__section__article__content__blog">
                                                 <Markdown source={posts[0].article} />
                                             </div>
-
                                         </main>
 
                                     </article>
